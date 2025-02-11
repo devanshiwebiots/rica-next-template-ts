@@ -24,7 +24,6 @@ const LeafletMapComponent: FC = () => {
           doubleClickZoom={true}
           scrollWheelZoom={true}
           dragging={true}
-          //  animate={true}
           easeLinearity={0.35}
         >
           <TileLayer

@@ -3,7 +3,6 @@ import { FC } from "react";
 import { useEffect, useState } from "react";
 import Img from "@/utils/BackgroundImageRatio";
 import NoSsr from "@/utils/HOC/NoSsr";
-import { MasonryGrid } from "@egjs/react-grid";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { IGridLayoutProps } from "@/components/common/grid-page/grid-page.d";
 
@@ -18,7 +17,6 @@ const GridLayoutPage: FC<IGridLayoutProps> = ({ value, grid, view }) => {
   }
   return (
     <NoSsr>
-      {/* <MasonryGrid className="masonry-spacing"> */}
         <Gallery>
           {value?.map((data: GalleryData) => (
             <div className={`${grid.gridSize === 3 && "col-xl-4"} ${grid.gridSize === 4 && "col-xl-3 col-lg-4"} col-sm-6 popular grid-item wow fadeInUp`} key={data.id}>
@@ -40,7 +38,6 @@ const GridLayoutPage: FC<IGridLayoutProps> = ({ value, grid, view }) => {
             </div>
           ))}
         </Gallery>
-      {/* </MasonryGrid> */}
     </NoSsr>
   );
 };

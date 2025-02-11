@@ -12,14 +12,12 @@ const SliderSix: FC<ISlideSixProps> = ({ slideData }) => {
   const { symbol, currencyValue } = useSelector((state: RootState) => state.currency);
    const slide3 = {
     adaptiveHeight: true,
-    // centerMode: true,
     infinite: false,
     speed: 300,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 5000,
-    // centerMode: false,
     responsive: [
         {
             breakpoint: 1200,

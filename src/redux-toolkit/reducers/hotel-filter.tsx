@@ -35,8 +35,13 @@ const hotelFilterReducer = createSlice({
       state.rateStatus = action.payload;
     },
     setPriceStatus: (state, action) => {
-      state.priceStatus = action.payload;
-      console.log(action.payload,"d")
+      const { min, max, ...ranges } = action.payload; 
+      if (Object.keys(ranges).length > 0) {
+        const lastKey = Object.keys(ranges).pop() as string;
+        state.priceStatus = { min: ranges[lastKey].min, max: ranges[lastKey].max };
+      } else {
+        state.priceStatus = { min, max };
+      }
     },
     setFilterTagStatus: (state, action) => {
       state.filterTagStatus = action.payload;

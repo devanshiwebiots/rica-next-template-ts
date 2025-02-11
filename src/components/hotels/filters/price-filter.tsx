@@ -1,6 +1,7 @@
 import { priceData1 } from "@/data/hotels/filter-data";
 import { setPriceStatus } from "@/redux-toolkit/reducers/hotel-filter";
 import { RootState } from "@/redux-toolkit/store";
+import { log } from "console";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -33,10 +34,10 @@ const PriceFilter: React.FC = () => {
   };
 
   useEffect(() => {
+    if (Object.keys(priceStatus).length === 0) {
       dispatch(setPriceStatus({ min: 100, max: 10000 }));
+    }
   }, []);
-
-  const isChecked = (type: string) => priceStatus[type] !== undefined;
 
   return (
     <div
@@ -51,7 +52,7 @@ const PriceFilter: React.FC = () => {
           <div className="collection-brand-filter">
             {priceData1.map((data: IFacilityProps, index) => (
               <div className="form-check collection-filter-checkbox" key={index}>
-                <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={isChecked(data.type)} onChange={handleCheckboxChange} />
+                <input type="radio" className="form-check-input" name="radio" id={data.type} value={data.type} onChange={handleCheckboxChange} />
                 <label className="form-check-label" htmlFor={data.type}>
                   {data.type}
                 </label>
