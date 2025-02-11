@@ -1,6 +1,6 @@
 import { FC } from "react";
 import CustomLayout from "@/layouts/layout";
-// import "@/public/assets/scss/color1.scss";
+
 import HomeBanner from "@/components/home/cab/modern/home-banner";
 import OurVehicleComponent from "@/components/home/cab/modern/our-vehicle";
 import VehicleVideo from "@/components/home/cab/modern/vehicle-video";

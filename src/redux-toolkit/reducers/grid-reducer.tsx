@@ -1,4 +1,4 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface IGridReducerProps {
   gridSize: number;
@@ -8,22 +8,35 @@ interface IGridReducerProps {
   productCount: string;
 }
 
-var initialState: IGridReducerProps = { gridSize: 2, gridStyle: "", toPage: 1, totalPages: 1, productCount: "" };
+const initialState: IGridReducerProps = {
+  gridSize: 2,
+  gridStyle: "",
+  toPage: 1,
+  totalPages: 1,
+  productCount: "",
+};
 
-export const gridReducer = createReducer(initialState, {
-  gridSize: (state, action) => {
-    state.gridSize = action.payload;
-  },
-  gridStyle: (state, action) => {
-    state.gridStyle = action.payload;
-  },
-  totalPages: (state, action) => {
-    state.totalPages = action.payload;
-  },
-  productCount: (state, action) => {
-    state.productCount = action.payload;
-  },
-  toPage: (state, action) => {
-    state.toPage = action.payload;
+const gridSlice = createSlice({
+  name: "grid",
+  initialState,
+  reducers: {
+    setGridSize: (state, action) => {
+      state.gridSize = action.payload;
+    },
+    setGridStyle: (state, action) => {
+      state.gridStyle = action.payload;
+    },
+    setTotalPages: (state, action) => {
+      state.totalPages = action.payload;
+    },
+    setProductCount: (state, action) => {
+      state.productCount = action.payload;
+    },
+    setToPage: (state, action) => {
+      state.toPage = action.payload;
+    },
   },
 });
+
+export const { setGridSize, setGridStyle, setTotalPages, setProductCount, setToPage } = gridSlice.actions;
+export default gridSlice.reducer;

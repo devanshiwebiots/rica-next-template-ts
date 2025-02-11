@@ -1,23 +1,32 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface IRestaurantReducerProps {
-  [key: string]: any;
   popularStatus: string[];
   cuisinesStatus: string[];
   deliverTimeStatus: string[];
 }
-var initialState: IRestaurantReducerProps = { popularStatus: [], cuisinesStatus: [], deliverTimeStatus: [] };
 
-export const restaurantFilerReducer = createReducer(initialState, {
-  popularStatus: (state, action) => {
-    state.popularStatus = action.payload;
-  },
+const initialState: IRestaurantReducerProps = {
+  popularStatus: [],
+  cuisinesStatus: [],
+  deliverTimeStatus: [],
+};
 
-  cuisinesStatus: (state, action) => {
-    state.cuisinesStatus = action.payload;
-  },
-
-  deliverTimeStatus: (state, action) => {
-    state.deliverTimeStatus = action.payload;
+const restaurantFilerReducer = createSlice({
+  name: "restaurantFilter",
+  initialState,
+  reducers: {
+    setPopularStatus: (state, action) => {
+      state.popularStatus = action.payload;
+    },
+    setCuisinesStatus: (state, action) => {
+      state.cuisinesStatus = action.payload;
+    },
+    setDeliverTimeStatus: (state, action) => {
+      state.deliverTimeStatus = action.payload;
+    },
   },
 });
+
+export const { setPopularStatus, setCuisinesStatus, setDeliverTimeStatus } = restaurantFilerReducer.actions;
+export default restaurantFilerReducer.reducer;

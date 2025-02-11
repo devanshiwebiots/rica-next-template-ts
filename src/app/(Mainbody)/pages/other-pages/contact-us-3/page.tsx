@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import ContactContent from "@/components/pages/other-pages/contact-us/contact-us1";
 import GoogleMapComponent from "@/components/common/map/google-map";

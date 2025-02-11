@@ -8,18 +8,31 @@ const Bookings: FC = () => {
     <>
       <div className="dashboard-box">
         <DashboardTitle title={"upcoming bookings"} />
-        {bookingsData.filter((booking: IBookingProps) => booking.status === "upcoming").map(RenderBooking)}
+        {bookingsData
+          .filter((booking: IBookingProps) => booking.status === "upcoming")
+          .map((booking) => (
+            <RenderBooking key={booking.id} {...booking} />
+          ))}
       </div>
       <div className="dashboard-box">
         <DashboardTitle title={"past bookings"} />
-        {bookingsData.filter((booking: IBookingProps) => booking.status === "past").map(RenderBooking)}
+        {bookingsData
+          .filter((booking: IBookingProps) => booking.status === "past")
+          .map((booking) => (
+            <RenderBooking key={booking.id} {...booking} />
+          ))}
       </div>
       <div className="dashboard-box">
         <DashboardTitle title={"cancelled bookings"} />
-        {bookingsData.filter((booking: IBookingProps) => booking.status === "cancelled").map(RenderBooking)}
+        {bookingsData
+          .filter((booking: IBookingProps) => booking.status === "cancelled")
+          .map((booking) => (
+            <RenderBooking key={booking.id} {...booking} />
+          ))}
       </div>
     </>
   );
 };
 
 export default Bookings;
+

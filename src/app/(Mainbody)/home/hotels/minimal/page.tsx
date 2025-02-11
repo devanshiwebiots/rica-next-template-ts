@@ -6,7 +6,6 @@ import StartComponent from "@/components/home/hotels/minimal/start";
 import TopCities from "@/components/home/hotels/minimal/top-cities";
 import TopDealsComponent from "@/components/home/hotels/minimal/top-deals";
 import CustomLayout from "@/layouts/layout";
-// import "@/public/assets/scss/color1.scss";
 
 const Minimal: React.FC = () => {
   return (

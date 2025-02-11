@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux-toolkit/store";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { setPriceStatus, setRateStatus } from "@/redux-toolkit/reducers/hotel-filter";
+import { setCabOptionStatus, setCabTypeStatus, setCapacityStatus } from "@/redux-toolkit/reducers/cab-filter";
 
 const useFilterCab = ({ value }: IFilterProductsProps) => {
   const [showProduct, setShowProduct] = useState<IBaseProps[]>(value);
@@ -59,11 +61,11 @@ const useFilterCab = ({ value }: IFilterProductsProps) => {
 
   useEffect(() => {
     const params = [
-      { name: "price", action: "priceStatus" },
-      { name: "rate", action: "rateStatus" },
-      { name: "capacity", action: "capacityStatus" },
-      { name: "cabType", action: "cabTypeStatus" },
-      { name: "option", action: "cabOptionStatus" },
+      { name: "price", action: setPriceStatus },
+      { name: "rate", action: setRateStatus},
+      { name: "capacity", action: setCapacityStatus },
+      { name: "cabType", action: setCabTypeStatus },
+      { name: "option", action: setCabOptionStatus },
     ];
 
     for (const param of params) {
@@ -71,9 +73,9 @@ const useFilterCab = ({ value }: IFilterProductsProps) => {
       if (values.length > 0) {
         if (param.name === "price") {
           const [min, max] = values[0].split(":").map(Number);
-          dispatch({ type: param.action, payload: { min, max } });
+          dispatch(setPriceStatus({ min, max }));
         } else {
-          dispatch({ type: param.action, payload: values });
+          dispatch(param.action(values));
         }
       }
     }

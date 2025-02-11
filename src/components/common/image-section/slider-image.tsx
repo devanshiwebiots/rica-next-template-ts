@@ -22,7 +22,7 @@ const SliderImage: FC<ISliderImageProps> = ({ imageSectionData, classSlide }) =>
           {imageSectionData.map((data: IImageSectionProps ,i) => (
             <Item original={data.img} width="1200" height="800" key={i}>
               {({ ref, open }) => (
-                <div key={data.id} onClick={open} ref={ref as React.MutableRefObject<HTMLImageElement>}>
+                <div key={data.id} onClick={open} ref={ref}>
                   <Img src={data.img} className="img-fluid bg-img w-100" alt="" />
                   <h6 className="view-all">{data.title}</h6>
                 </div>

@@ -1,6 +1,6 @@
 "use client";
 import { FC, useEffect } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux-toolkit/store";

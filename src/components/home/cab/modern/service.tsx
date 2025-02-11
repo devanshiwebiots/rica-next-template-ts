@@ -7,6 +7,7 @@ import TitleComponent from "@/components/common/title/title";
 import Rating from "@/components/common/rating";
 import Button from "@/components/common/btn";
 import Link from 'next/link';
+import { IServiceCabProps } from "./cab-d";
 
 const Service: FC = () => {
   return (

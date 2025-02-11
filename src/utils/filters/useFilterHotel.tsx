@@ -1,4 +1,5 @@
 "use client";
+import { setDistrictStatus, setFacilityStatus, setHostLangStatus, setPriceStatus, setRateStatus } from "@/redux-toolkit/reducers/hotel-filter";
 import { RootState } from "@/redux-toolkit/store";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -51,15 +52,14 @@ const useFilterHotel = ({ value }: IFilterProductsProps) => {
 
     router.push(pathname + "?" + params.toString());
   }, [districtStatus, facilityStatus, hostLangStatus, rateStatus, priceStatus, value, router, pathname]);
-  
 
   useEffect(() => {
     const params = [
-      { name: "district", action: "districtStatus" },
-      { name: "facility", action: "facilityStatus" },
-      { name: "language", action: "hostLangStatus" },
-      { name: "rate", action: "rateStatus" },
-      { name: "price", action: "priceStatus" },
+      { name: "district", action: setDistrictStatus },
+      { name: "facility", action: setFacilityStatus },
+      { name: "language", action: setHostLangStatus },
+      { name: "rate", action: setRateStatus },
+      { name: "price", action: setPriceStatus },
     ];
 
     for (const param of params) {
@@ -67,9 +67,9 @@ const useFilterHotel = ({ value }: IFilterProductsProps) => {
       if (values.length > 0) {
         if (param.name === "price") {
           const [min, max] = values[0].split(":").map(Number);
-          dispatch({ type: param.action, payload: { min, max } });
+          dispatch(setPriceStatus({ min, max }));
         } else {
-          dispatch({ type: param.action, payload: values });
+          dispatch(param.action(values));
         }
       }
     }

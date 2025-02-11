@@ -96,14 +96,12 @@ export const slide2 = {
 
 export const slide3 = {
   adaptiveHeight: true,
-  // centerMode: true,
   infinite: true,
   speed: 300,
   slidesToShow: 3,
   slidesToScroll: 1,
   autoplay: false,
   autoplaySpeed: 5000,
-  // centerMode: false,
   responsive: [
       {
           breakpoint: 1200,
@@ -251,18 +249,7 @@ export const sliderNav = {
   dots: false,
   adaptiveHeight: true,
   focusOnSelect: true,
-  // centerMode: true,
 };
-
-
-// export const sliderNav = {
-//   slidesToShow: 4,
-//   slidesToScroll: 1,
-//   arrows: false,
-//   dots: false,
-//   adaptiveHeight: true,
-//   focusOnSelect: true,
-// };
 
 export const slide7 = {
   dots: false,

@@ -1446,8 +1446,6 @@ header {
           }
           &:hover {
             .nav-submenu {
-              //opacity: 0;
-              //visibility: hidden;
               margin-top: 0;
             }
           }
@@ -2748,14 +2746,6 @@ section {
       background-position: 500px 1000px, 400px 400px, 300px 300px;
     }
   }
-  // .snow {
-  //   position: absolute;
-  //   left: 0;
-  //   top: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   z-index: 9;
-  // }
 }
 
 .mix-pills {
@@ -9920,7 +9910,6 @@ section {
         li {
           padding: 7px 17px;
           font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
-          // background-color: #fdfdfd;
           cursor: pointer;
           background-color: $inner-bg;
           transition: all 0.5s ease;
@@ -10110,13 +10099,6 @@ section {
       .collection-collapse-block-content {
         display: none;
       }
-      // .collection-collapse-block-content {
-      //   padding-bottom: 12px;
-
-      //   &.hide-content {
-      //     display: none;
-      //   }
-      // }
     }
     .filter-block {
       .collapse-block-title {
@@ -17701,17 +17683,6 @@ $c-loader-front: #cee4e7;
       .filter-select {
         li {
           background-color: $bg-loader;
-          // .product-4-layout-view {
-          //   .filter-select {
-          //     li {
-          //       width: 6px;
-          //       height: 17px;
-          //       background-color: #ef3f3e;
-          //       margin-left: 4px;
-          //       margin-bottom: -1px;
-          //     }
-          //   }
-          // }
         }
       }
     }
@@ -19039,15 +19010,12 @@ $c-loader-front: #cee4e7;
 
 @keyframes plane-animation {
   0% {
-    //margin-top: 135px;
     transform: translateY(-50px);
   }
   50% {
-    //margin-top: 165px;
     transform: translateY(0);
   }
   100% {
-    //margin-top: 130px;
     transform: translateY(-50px);
   }
 }

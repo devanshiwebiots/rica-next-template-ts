@@ -1,4 +1,5 @@
 import { priceData1 } from "@/data/hotels/filter-data";
+import { setPriceStatus } from "@/redux-toolkit/reducers/hotel-filter";
 import { RootState } from "@/redux-toolkit/store";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,19 +18,22 @@ const PriceFilter: React.FC = () => {
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     const isChecked = event.target.checked;
-    const [min, max] = value.split("-").map(Number);
+    const [min, max] = value
+      .replace(/\$/g, "")
+      .split("-")
+      .map((num) => Number(num.trim()));
 
     if (isChecked) {
-      dispatch({ type: "priceStatus", payload: { ...priceStatus, [value]: { min, max } } });
+      dispatch(setPriceStatus({ ...priceStatus, [value]: { min, max } }));
     } else {
       const updatedPriceStatus = { ...priceStatus };
       delete updatedPriceStatus[value];
-      dispatch({ type: "priceStatus", payload: updatedPriceStatus });
+      dispatch(setPriceStatus(updatedPriceStatus));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "priceStatus", payload: { min: 100, max: 10000 } });
+      dispatch(setPriceStatus({ min: 100, max: 10000 }));
   }, []);
 
   const isChecked = (type: string) => priceStatus[type] !== undefined;
@@ -45,16 +49,9 @@ const PriceFilter: React.FC = () => {
         <h6 className="collapse-block-title">Price</h6>
         <div className={`collection-collapse-block-content ${!show ? "d-none" : ""} `}>
           <div className="collection-brand-filter">
-            {priceData1.map((data: IFacilityProps,index) => (
+            {priceData1.map((data: IFacilityProps, index) => (
               <div className="form-check collection-filter-checkbox" key={index}>
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id={data.type}
-                  value={data.type}
-                  checked={isChecked(data.type)}
-                  onChange={handleCheckboxChange}
-                />
+                <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={isChecked(data.type)} onChange={handleCheckboxChange} />
                 <label className="form-check-label" htmlFor={data.type}>
                   {data.type}
                 </label>

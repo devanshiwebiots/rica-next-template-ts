@@ -1,5 +1,5 @@
 "use client";
-// import "@/public/assets/scss/color1.scss";
+
 import Breadcrumb from "@/components/common/breadcrumb/page";
 import CustomLayout from "@/layouts/layout";
 import { FC, useEffect } from "react";
@@ -20,7 +20,7 @@ const Grid2: FC = () => {
   return (
     <CustomLayout title="light_header" userBgClass="user user-light" logo={"dark"}>
       <Breadcrumb title="Home" subTitle="portfolio" bannerImg={"/assets/images/tour/inner-page/breadcrumb.jpg"} />
-      <GridView value={data} size={2} gridType={"grid-view"} type="tour"  />
+      <GridView value={data} size={2} gridType={"grid-view"} type="tour" />
     </CustomLayout>
   );
 };

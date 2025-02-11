@@ -4,21 +4,6 @@ const CustomizePage: FC = () => {
   const [type, setType] = useState<string>("ltr");
   const [layout, setLayout] = useState<string>("light");
 
-  // useEffect(() => {
-  //   const storedType = localStorage.getItem("type");
-  //   const storedLayout = localStorage.getItem("layout");
-
-  //   if (storedType) {
-  //     setType(storedType);
-  //     document.body.classList.add(storedType);
-  //   }
-
-  //   if (storedLayout) {
-  //     setLayout(storedLayout);
-  //     document.body.classList.add(storedLayout);
-  //   }
-  // }, []);
-
   const onChangeType = (ele: string) => {
     const oppositeType = ele === "rtl" ? "ltr" : "rtl";
     document.body.classList.toggle(ele);
@@ -28,7 +13,6 @@ const CustomizePage: FC = () => {
   };
 
   const onChangeLayout = (newLayout: string) => {
-    // document.body.classList.remove(layout);
     if(newLayout == 'dark'){
       document.body.classList.add('dark');
       document.body.classList.remove('light');

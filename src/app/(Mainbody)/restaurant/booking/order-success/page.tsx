@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import SuccessPage from "@/components/common/booking-page/success";
 

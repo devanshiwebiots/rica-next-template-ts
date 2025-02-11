@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import Testimonial2 from "@/components/home/tour/modern/testimonial";
 import Breadcrumb from "@/components/common/breadcrumb/page";

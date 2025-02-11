@@ -1,4 +1,5 @@
 import { departureTimeData } from "@/data/flight/filter-data";
+import { setDepartureStatus } from "@/redux-toolkit/reducers/flight-filter";
 import Img from "@/utils/BackgroundImageRatio";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,14 +14,14 @@ const DepartureFilter: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "departureStatus", payload: [...departureStatus, value] });
+      dispatch(setDepartureStatus([...departureStatus, value]));
     } else {
-      dispatch({ type: "departureStatus", payload: departureStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setDepartureStatus(departureStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "departureStatus", payload: departureStatus });
+    dispatch(setDepartureStatus(departureStatus));
   }, [departureStatus]);
 
   return (
@@ -28,12 +29,13 @@ const DepartureFilter: React.FC = () => {
       className="filter-block"
       onClick={() => {
         setShow(!show);
-      }}>
+      }}
+    >
       <div className={`collection-collapse-block ${show ? "open" : ""}`}>
         <h6 className="collapse-block-title">Departure</h6>
         <div className={`collection-collapse-block-content ${!show ? "d-none" : ""} `}>
           <div className="collection-brand-filter">
-            {departureTimeData.map((data: IAllFiltersProps,index) => {
+            {departureTimeData.map((data: IAllFiltersProps, index) => {
               return (
                 <div className="form-check collection-filter-checkbox" key={index}>
                   <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={departureStatus.includes(data.type)} onChange={handleCheckboxChange} />
@@ -54,4 +56,3 @@ const DepartureFilter: React.FC = () => {
 const MemoizedDepartureFilter = React.memo(DepartureFilter);
 
 export default MemoizedDepartureFilter;
-

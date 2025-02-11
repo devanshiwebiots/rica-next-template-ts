@@ -1,7 +1,6 @@
 "use client";
 import { FC, useEffect } from "react";
 import BannerBreadcrumbs from "@/components/flight/sidebar/left-sidebar/page";
-// import "@/public/assets/scss/color1.scss";
 import CustomLayout from "@/layouts/layout";
 import SearchSection from "@/components/flight/sidebar/left-sidebar/search-section/search-section.tsx";
 import GridView from "@/components/common/grid-page/grid/grid-view";

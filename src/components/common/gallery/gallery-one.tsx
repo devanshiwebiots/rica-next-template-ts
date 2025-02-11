@@ -27,7 +27,7 @@ const GalleryOne: FC<GalleryOneProps> = ({ galleryData }) => {
         {galleryData.map((data: GalleryData,key) => (
           <Item original={data.img} width="1200" height="800" key={key}>
             {({ ref, open }) => (
-              <div className="gallery_box" key={data.id} ref={ref as React.MutableRefObject<HTMLImageElement>} onClick={open}>
+              <div className="gallery_box" key={data.id} ref={ref} onClick={open}>
                 <div className="gallery-img">
                   <div className="overlay"></div>
                   <img src={data.img} alt="" className="img-fluid w-100" />

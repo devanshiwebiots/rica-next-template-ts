@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import React, { FC, useEffect, useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux-toolkit/store";
+import { setPriceStatus } from "@/redux-toolkit/reducers/hotel-filter";
 
 const RangeInputFields: FC<IPriceRangeFilterProps> = ({ min, max }) => {
   const { symbol, currencyValue } = useSelector((state: RootState) => state.currency);
@@ -21,7 +22,7 @@ const RangeInputFields: FC<IPriceRangeFilterProps> = ({ min, max }) => {
   const priceHandle = (value: number[]) => {
     const sortedValues = value.sort((a, b) => a - b);
     setValues(sortedValues);
-    dispatch({ type: "priceStatus", payload: { min: sortedValues[0], max: sortedValues[1] } });
+    dispatch(setPriceStatus({ min: sortedValues[0], max: sortedValues[1] }));
   };
 
   return (
@@ -33,7 +34,8 @@ const RangeInputFields: FC<IPriceRangeFilterProps> = ({ min, max }) => {
             justifyContent: "center",
             flexWrap: "wrap",
             margin: "0em",
-          }}>
+          }}
+        >
           <Range
             values={values}
             step={STEP}
@@ -54,7 +56,8 @@ const RangeInputFields: FC<IPriceRangeFilterProps> = ({ min, max }) => {
                   height: "36px",
                   display: "flex",
                   width: "100%",
-                }}>
+                }}
+              >
                 <output style={{ marginTop: "30px" }}>
                   {symbol}
                   {(currencyValue * min).toFixed(0)}
@@ -72,7 +75,8 @@ const RangeInputFields: FC<IPriceRangeFilterProps> = ({ min, max }) => {
                       max: max,
                     }),
                     alignSelf: "center",
-                  }}>
+                  }}
+                >
                   {children}
                 </div>
                 <output style={{ marginTop: "30px" }}>
@@ -96,7 +100,8 @@ const RangeInputFields: FC<IPriceRangeFilterProps> = ({ min, max }) => {
                   justifyContent: "center",
                   alignItems: "center",
                   boxShadow: "0px 2px 6px #AAA",
-                }}>
+                }}
+              >
                 <div
                   style={{
                     position: "absolute",
@@ -108,7 +113,8 @@ const RangeInputFields: FC<IPriceRangeFilterProps> = ({ min, max }) => {
                     padding: "4px",
                     borderRadius: "4px",
                     backgroundColor: "#ef3f3e",
-                  }}>
+                  }}
+                >
                   {symbol}
                   {(currencyValue * values[index]).toFixed(0)}
                 </div>

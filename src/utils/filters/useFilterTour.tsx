@@ -19,9 +19,8 @@ const useFilterTour = ({ value }: IFilterProductsProps) => {
 
   useEffect(() => {
     const filteredProducts = value?.filter((product: IBaseProps) => {
-      const filteredRate = rateStatus.length === 0 ||  product.rate === undefined || rateStatus.includes(product.rate);
-      const filteredPrice =
-        product.price !== undefined && product.price >= priceStatus.min && product.price <= priceStatus.max;
+      const filteredRate = rateStatus.length === 0 || product.rate === undefined || rateStatus.includes(product.rate);
+      const filteredPrice = product.price !== undefined && product.price >= priceStatus.min && product.price <= priceStatus.max;
       //tour
       const filterFlight = flightStatus.length === 0 || product.flights !== undefined || flightStatus.includes(product.flights) || flightStatus.includes("all");
       const filterTravel = travelStatus.length === 0 || travelStatus.includes(product.travel) || travelStatus.includes("all");
@@ -57,28 +56,6 @@ const useFilterTour = ({ value }: IFilterProductsProps) => {
 
     router.push(pathname + "?" + params.toString());
   }, [rateStatus, priceStatus, value, router, tripDurationStatus, travelStatus, flightStatus, pathname]);
-
-  // useEffect(() => {
-  //   const params = [
-  //     { name: "rate", action: "rateStatus" },
-  //     { name: "price", action: "priceStatus" },
-  //     { name: "flights", action: "flightStatus" },
-  //     { name: "travel", action: "travelStatus" },
-  //     { name: "trip", action: "tripDurationStatus" },
-  //   ];
-
-  //   for (const param of params) {
-  //     const values = searchParams.getAll(param.name);
-  //     if (values.length > 0) {
-  //       if (param.name === "price") {
-  //         const [min, max] = values[0].split(":").map(Number);
-  //         dispatch({ type: param.action, payload: { min, max } });
-  //       } else {
-  //         dispatch({ type: param.action, payload: values });
-  //       }
-  //     }
-  //   }
-  // }, [searchParams, dispatch]);
 
   return showProduct;
 };

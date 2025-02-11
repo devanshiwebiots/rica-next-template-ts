@@ -1,5 +1,5 @@
 "use client";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import { FC, useEffect } from "react";
 import HomeBanner from "@/components/common/banner/restaurant-banner";

@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import Breadcrumb from "@/components/common/breadcrumb/page";
 import CustomLayout from "@/layouts/layout";
 import LogoCab from "@/components/home/cab/modern/logo-cab";

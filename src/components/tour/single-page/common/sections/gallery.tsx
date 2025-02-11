@@ -14,7 +14,7 @@ const Gallerys: FC<ISinglePageGalleryProps> = ({ galleryData }) => {
                 <Item original={data.img} width="1024" height="768" key={index}>
                   {({ ref, open }) => (
                     <div className="col-lg-4 col-sm-6" onClick={open}>
-                      <div className="overlay" ref={ref as React.MutableRefObject<HTMLImageElement>}>
+                      <div className="overlay" ref={ref}>
                         <div className="overlay-background">
                           <i className="fa fa-plus" aria-hidden="true"></i>
                         </div>

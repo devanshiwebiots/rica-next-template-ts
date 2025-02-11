@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux-toolkit/store";
 import TitleThree from "@/components/common/title/title-three";
 import Link from "next/link";
+import { IOurVehicleProps } from "./cab-d";
 
 const OurVehicleComponent: FC = () => {
   const { symbol, currencyValue } = useSelector((state: RootState) => state.currency);

@@ -1,27 +1,46 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface ITourReducerProps {
-    [key: string]: any;
-    flightStatus: string[];
-    travelStatus: string[];
-    tripDurationStatus: string[];
-    filterTourTags: string[];
+  flightStatus: string[];
+  travelStatus: string[];
+  tripDurationStatus: string[];
+  filterTourTags: string[];
 }
-var initialState: ITourReducerProps = { flightStatus: [], travelStatus: [], tripDurationStatus: [], filterTourTags: [] };
 
-export const tourFilterReducer = createReducer(initialState, {
-    flightStatus: (state, action) => {
-        state.flightStatus = action.payload;
-    },
+const initialState: ITourReducerProps = {
+  flightStatus: [],
+  travelStatus: [],
+  tripDurationStatus: [],
+  filterTourTags: [],
+};
 
-    travelStatus: (state, action) => {
-        state.travelStatus = action.payload;
+const tourFilterReducer = createSlice({
+  name: "tourFilter",
+  initialState,
+  reducers: {
+    setFlightStatus: (state, action) => {
+      state.flightStatus = action.payload;
     },
-
-    tripDurationStatus: (state, action) => {
-        state.tripDurationStatus = action.payload;
+    setTravelStatus: (state, action) => {
+      state.travelStatus = action.payload;
     },
-    filterTourTags: (state, action) => {
-        state.filterTourTags = action.payload;
+    setTripDurationStatus: (state, action) => {
+      state.tripDurationStatus = action.payload;
     },
+    setFilterTourTags: (state, action) => {
+      state.filterTourTags = action.payload;
+    },
+     tourRemoveFilter: (state, action) => {
+          const { key, value } = action.payload as { key: keyof ITourReducerProps; value: any };
+          if (Array.isArray(state[key])) {
+            (state[key] as string[]) = (state[key] as string[]).filter((item) => item !== value);
+          } 
+          else {
+            (state[key] as string | number) = typeof state[key] === "number" ? 0 : "";
+          }
+        },
+  },
 });
+
+export const { setFlightStatus, setTravelStatus, setTripDurationStatus, setFilterTourTags, tourRemoveFilter } = tourFilterReducer.actions;
+export default tourFilterReducer.reducer;

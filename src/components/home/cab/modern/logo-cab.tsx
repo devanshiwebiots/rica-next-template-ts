@@ -7,6 +7,7 @@ import { slide5 } from "@/components/common/slider-options";
 import TitleThree from "@/components/common/title/title-three";
 import Img from "@/utils/BackgroundImageRatio";
 import { Rica } from "@/constant/constant";
+import { ICabLogoProps } from "./cab-d";
 
 const LogoCab: FC<IGalleryPageProps> = ({ title }) => {
   return (

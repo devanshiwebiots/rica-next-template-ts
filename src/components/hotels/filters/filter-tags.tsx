@@ -1,3 +1,7 @@
+import { cabRemoveFilter, setCabOptionStatus, setCabTypeStatus, setCapacityStatus } from "@/redux-toolkit/reducers/cab-filter";
+import { flightRemoveFilter } from "@/redux-toolkit/reducers/flight-filter";
+import { hotelRemoveFilter, setPriceStatus, setRateStatus } from "@/redux-toolkit/reducers/hotel-filter";
+import { setFlightStatus, tourRemoveFilter } from "@/redux-toolkit/reducers/tour-filter";
 import { RootState } from "@/redux-toolkit/store";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,22 +18,21 @@ const FilterTags: FC = () => {
   };
   const removeFilter = (key: string, value: string) => {
     if (key === "price") {
-      dispatch({ type: key, payload: [] });
+      dispatch(setPriceStatus([]));
     } else {
       if (key in filterTags) {
-        dispatch({ type: key, payload: filterTags[key].filter((val: string) => val !== value) });
+        dispatch(hotelRemoveFilter({ key, value }));
       } else if (key in filterTourTags) {
-        dispatch({ type: key, payload: filterTourTags[key].filter((val: string) => val !== value) });
+        dispatch(tourRemoveFilter({ key, value }));
       } else if (key in flightFilterTag) {
-        dispatch({ type: key, payload: flightFilterTag[key].filter((val: string) => val !== value) });
-      } 
-      else if (key in cabFilterTag) {
-        dispatch({ type: key, payload: cabFilterTag[key].filter((val: string) => val !== value) });
+        dispatch(flightRemoveFilter({ key, value }));
+      } else if (key in cabFilterTag) {
+        dispatch(cabRemoveFilter({ key, value }));
       }
     }
   };
 
-  const renderTag = (key: string, value: number | Object | any, index:number = 0) => {
+  const renderTag = (key: string, value: number | Object | any, index: number = 0) => {
     const updatedKey = StringConvert(key);
     const displayKey = updatedKey.replace(" Status", "");
 
@@ -58,17 +61,15 @@ const FilterTags: FC = () => {
     }
 
     return (
-      <div className="filter-tag" key={key+index}>
+      <div className="filter-tag" key={key + index}>
         {`${displayKey}: ${tagValue}`}
         <button className="btn-close" aria-label="Close" onClick={() => removeFilter(key, value)}></button>
       </div>
     );
   };
 
-  const allTags: [string, string][] = [...Object.entries(filterTags), ...Object.entries(filterTourTags), ...Object.entries(flightFilterTag), ...Object.entries(cabFilterTag)
-  ];
+  const allTags: [string, string][] = [...Object.entries(filterTags), ...Object.entries(filterTourTags), ...Object.entries(flightFilterTag), ...Object.entries(cabFilterTag)];
 
-  
   return (
     <ul className="product-filter-tags">
       {allTags.map(([key, value]) => (

@@ -1,4 +1,5 @@
 import { airLinesData } from "@/data/flight/filter-data";
+import { setAirlineStatus } from "@/redux-toolkit/reducers/flight-filter";
 import React, { ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,19 +12,19 @@ const Airlines: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "airlineStatus", payload: [...airlineStatus, value] });
+      dispatch(setAirlineStatus([...airlineStatus, value]));
     } else {
-      dispatch({ type: "airlineStatus", payload: airlineStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setAirlineStatus(airlineStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "airlineStatus", payload: airlineStatus });
+      dispatch(setAirlineStatus(airlineStatus));
   }, [airlineStatus]);
 
   return (
     <>
-      {airLinesData.map((data: IAllFiltersProps,index) => {
+      {airLinesData.map((data: IAllFiltersProps, index) => {
         return (
           <div className="form-check collection-filter-checkbox" key={index}>
             <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={airlineStatus.includes(data.type)} onChange={handleCheckboxChange} />

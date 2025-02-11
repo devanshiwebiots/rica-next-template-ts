@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Banner from "@/components/common/banner/image-banner";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import CheckoutPage from "@/components/restaurant/booking/checkout/page";
 

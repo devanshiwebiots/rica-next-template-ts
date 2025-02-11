@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import FullBanner1 from "@/components/home/tour/modern/full-banner";
 import FullBanner2 from "@/components/home/flight/modern/full-banner";

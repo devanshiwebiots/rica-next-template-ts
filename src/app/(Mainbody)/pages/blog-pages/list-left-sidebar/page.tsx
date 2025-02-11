@@ -1,4 +1,3 @@
-// import "@/public/assets/scss/color1.scss";
 import Breadcrumb from "@/components/common/breadcrumb/page";
 import CustomLayout from "@/layouts/layout";
 import { FC } from "react";

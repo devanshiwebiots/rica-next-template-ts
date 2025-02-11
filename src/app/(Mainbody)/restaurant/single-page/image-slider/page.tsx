@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import MainSinglePage from "@/components/restaurant/single-page/classic/single-page";
 import BannerSlider from "@/components/hotels/single-pages/image-slider/banner-slider";

@@ -3,6 +3,7 @@ import { RootState } from "@/redux-toolkit/store";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Img from "@/utils/BackgroundImageRatio";
 import { useDispatch, useSelector } from "react-redux";
+import { setArriveStatus } from "@/redux-toolkit/reducers/flight-filter";
 
 const ArriveFilter: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -14,23 +15,23 @@ const ArriveFilter: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "arriveStatus", payload: [...arriveStatus, value] });
+      dispatch(setArriveStatus([...arriveStatus, value]));
     } else {
-      dispatch({ type: "arriveStatus", payload: arriveStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setArriveStatus(arriveStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "arriveStatus", payload: arriveStatus });
+      dispatch(setArriveStatus(arriveStatus));
   }, [arriveStatus]);
 
   return (
     <>
-      {arriveTimeData.map((data,index) => (
+      {arriveTimeData.map((data, index) => (
         <div className="form-check collection-filter-checkbox" key={index}>
           <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={arriveStatus.includes(data.type)} onChange={handleCheckboxChange} />
           <label className="form-check-label" htmlFor={data.type}>
-          <Img src={data.img} className="me-1" />
+            <Img src={data.img} className="me-1" />
             {data.title}
           </label>
         </div>

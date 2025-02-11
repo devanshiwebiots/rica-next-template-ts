@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import About from "@/components/home/restaurant/classic/about";
-// import "@/public/assets/scss/color1.scss";
+
 import HomeBanner from "@/components/home/restaurant/classic/home-banner";
 import TopCategory from "@/components/home/restaurant/classic/top-category";
 import CustomLayout from "@/layouts/layout";

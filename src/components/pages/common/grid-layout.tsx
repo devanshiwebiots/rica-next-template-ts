@@ -25,7 +25,7 @@ const GridLayoutPage: FC<IGridLayoutProps> = ({ value, grid, view }) => {
               <div className="overlay">
                 <Item original={data.img} width="1200" height="800">
                   {({ ref, open }) => (
-                    <div className="portfolio-image" ref={ref as React.MutableRefObject<HTMLImageElement>} onClick={open}>
+                    <div className="portfolio-image" ref={ref} onClick={open}>
                       <Img src={data.img} alt="" className="img-fluid" />
                     </div>
                   )}

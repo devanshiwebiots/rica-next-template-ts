@@ -1,5 +1,5 @@
 "use client";
-// import "@/public/assets/scss/color1.scss";
+
 import AboutComponent from "@/components/home/hotels/classic/about";
 import Gallery from "@/components/home/hotels/classic/gallery";
 import HomeBanner from "@/components/home/hotels/classic/home-banner";
@@ -19,7 +19,7 @@ const Classic: React.FC = () => {
     <>
       <CustomLayout title="overlay-black" userBgClass="user user-light">
         <HomeBanner />
-        <SearchHotel/>
+        <SearchHotel />
         <AboutComponent />
         <RoomSuits />
         <Gallery />

@@ -1,5 +1,5 @@
 "use client";
-// import "@/public/assets/scss/color1.scss";
+
 import Breadcrumb from "@/components/common/breadcrumb/page";
 import CustomLayout from "@/layouts/layout";
 import { FC, useEffect } from "react";

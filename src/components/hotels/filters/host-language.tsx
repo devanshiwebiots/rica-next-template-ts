@@ -1,5 +1,6 @@
 import { HostLanguage } from "@/constant/constant";
 import { hostLang } from "@/data/hotels/filter-data";
+import { setHostLangStatus } from "@/redux-toolkit/reducers/hotel-filter";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,14 +15,14 @@ const HostLanguageFilter: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "hostLangStatus", payload: [...hostLangStatus, value] });
+      dispatch(setHostLangStatus([...hostLangStatus, value]));
     } else {
-      dispatch({ type: "hostLangStatus", payload: hostLangStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setHostLangStatus(hostLangStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "hostLangStatus", payload: hostLangStatus });
+    dispatch(setHostLangStatus(hostLangStatus));
   }, [hostLangStatus]);
 
   return (
@@ -29,14 +30,15 @@ const HostLanguageFilter: React.FC = () => {
       className="filter-block"
       onClick={() => {
         setShow(!show);
-      }}>
+      }}
+    >
       <div className={`collection-collapse-block ${show ? "open" : ""}`}>
         <h6 className="collapse-block-title" onClick={() => setShow(!show)}>
           {HostLanguage}
         </h6>
         <div className={`collection-collapse-block-content ${!show ? "d-none" : ""}`}>
           <div className="collection-brand-filter">
-            {hostLang.map((data: IFacilityProps,index) => {
+            {hostLang.map((data: IFacilityProps, index) => {
               return (
                 <div className="form-check collection-filter-checkbox" key={index}>
                   <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={hostLangStatus.includes(data.type)} onChange={handleCheckboxChange} />

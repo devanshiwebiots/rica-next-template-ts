@@ -1,4 +1,6 @@
-interface IOurVehicleProps {
+import { JSX } from "react";
+
+export interface IOurVehicleProps {
   id: number;
   img: string;
   title: string;
@@ -6,7 +8,7 @@ interface IOurVehicleProps {
   price: number;
 }
 
-interface IServiceCabProps {
+export interface IServiceCabProps {
   id: number;
   svg: JSX.Element;
   title: string;
@@ -14,7 +16,7 @@ interface IServiceCabProps {
   price: string;
 }
 
-interface ICabLogoProps {
+export interface ICabLogoProps {
   id: number;
   img: string;
 }

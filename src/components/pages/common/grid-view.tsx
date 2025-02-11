@@ -5,6 +5,7 @@ import GridLayoutPage from "./grid-layout";
 import CreativePage from "../portfolio/creative-3/page";
 import { RootState } from "@/redux-toolkit/store";
 import MasonaryLayout from "./MasonaryLayout";
+import { setGridSize, setGridStyle } from "@/redux-toolkit/reducers/grid-reducer";
 
 interface IBaseProps {
   // Define common properties here
@@ -18,7 +19,7 @@ interface IGridViewProps {
   view?: string;
 }
 
-const GridView: FC<IGridViewProps> = ({value,size,gridType,type,view}) => {
+const GridView: FC<IGridViewProps> = ({ value, size, gridType, type, view }) => {
   const dispatch = useDispatch();
   const grid = useSelector((state: RootState) => state.gridReducer);
   const [filteredMenu, setFilteredMenu] = useState<IBaseProps[] | undefined>();
@@ -31,8 +32,8 @@ const GridView: FC<IGridViewProps> = ({value,size,gridType,type,view}) => {
 
   useEffect(() => {
     setFilteredMenu(value);
-    dispatch({ type: "gridSize", payload: size });
-    dispatch({ type: "gridStyle", payload: gridType });
+    dispatch(setGridSize(size));
+    dispatch(setGridStyle(gridType));
   }, [value]);
 
   return (
@@ -41,16 +42,8 @@ const GridView: FC<IGridViewProps> = ({value,size,gridType,type,view}) => {
         <div className="filter-button-group">
           <CategoryPage value={value} getCategories={getCategories} />
         </div>
-        
-        <div className="row content grid zoom-gallery">
-          {view == "creative" ? (
-            <CreativePage value={filteredMenu} grid={grid} />
-          ) : view == "masonry" ? (
-            <MasonaryLayout grid={grid} value={filteredMenu} type={type} view={view}/>
-          ) : (
-            <GridLayoutPage grid={grid} value={filteredMenu} type={type} view={view}/>
-          )}
-        </div>
+
+        <div className="row content grid zoom-gallery">{view == "creative" ? <CreativePage value={filteredMenu} grid={grid} /> : view == "masonry" ? <MasonaryLayout grid={grid} value={filteredMenu} type={type} view={view} /> : <GridLayoutPage grid={grid} value={filteredMenu} type={type} view={view} />}</div>
       </div>
     </section>
   );

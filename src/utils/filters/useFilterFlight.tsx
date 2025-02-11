@@ -1,4 +1,6 @@
 "use client";
+import { setAirlineStatus, setArriveStatus, setDepartureStatus, setStopStatus } from "@/redux-toolkit/reducers/flight-filter";
+import { setPriceStatus } from "@/redux-toolkit/reducers/hotel-filter";
 import { RootState } from "@/redux-toolkit/store";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -65,11 +67,11 @@ const useFilterFlight = ({ value }: IFilterProductsProps) => {
 
   useEffect(() => {
     const params = [
-      { name: "price", action: "priceStatus" },
-      { name: "airline", action: "airlineStatus" },
-      { name: "stop", action: "stopStatus" },
-      { name: "dxb", action: "departureStatus" },
-      { name: "cdg", action: "arriveStatus" },
+      { name: "price", action: setPriceStatus },
+      { name: "airline", action: setAirlineStatus },
+      { name: "stop", action: setStopStatus },
+      { name: "dxb", action: setDepartureStatus },
+      { name: "cdg", action: setArriveStatus },
     ];
 
     for (const param of params) {
@@ -77,9 +79,9 @@ const useFilterFlight = ({ value }: IFilterProductsProps) => {
       if (values.length > 0) {
         if (param.name === "price") {
           const [min, max] = values[0].split(":").map(Number);
-          dispatch({ type: param.action, payload: { min, max } });
+          dispatch(setPriceStatus({ min, max }));
         } else {
-          dispatch({ type: param.action, payload: values });
+          dispatch(param.action(values));
         }
       }
     }

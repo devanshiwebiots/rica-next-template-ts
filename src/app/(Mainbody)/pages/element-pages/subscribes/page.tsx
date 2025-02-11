@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import SubscribeComp from "@/components/home/flight/modern/subscribe";
 import SubscribeOne from "@/components/common/subscribe/page";

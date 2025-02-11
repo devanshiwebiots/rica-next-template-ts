@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FacilitiesConst } from "@/constant/constant";
 import { RootState } from "@/redux-toolkit/store";
+import { setFacilityStatus } from "@/redux-toolkit/reducers/hotel-filter";
 
 const FacilityFilter: React.FC = () => {
   const [show, setShow] = useState(true);
@@ -14,14 +15,14 @@ const FacilityFilter: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "facilityStatus", payload: [...facilityStatus, value] });
+      dispatch(setFacilityStatus([...facilityStatus, value]));
     } else {
-      dispatch({ type: "facilityStatus", payload: facilityStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setFacilityStatus(facilityStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "facilityStatus", payload: facilityStatus });
+      dispatch(setFacilityStatus(facilityStatus));
   }, [facilityStatus]);
 
   return (
@@ -29,14 +30,15 @@ const FacilityFilter: React.FC = () => {
       className="filter-block"
       onClick={() => {
         setShow(!show);
-      }}>
+      }}
+    >
       <div className={`collection-collapse-block ${show ? "open" : ""}`}>
         <h6 className="collapse-block-title" onClick={() => setShow(!show)}>
           {FacilitiesConst}
         </h6>
         <div className={`collection-collapse-block-content ${!show ? "d-none" : ""} `}>
           <div className="collection-brand-filter">
-            {facility.map((data: IFacilityProps,index) => {
+            {facility.map((data: IFacilityProps, index) => {
               return (
                 <div className="form-check collection-filter-checkbox" key={index}>
                   <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={facilityStatus.includes(data.type)} onChange={handleCheckboxChange} />

@@ -1,4 +1,5 @@
 import { carOptionData } from "@/data/car/filter";
+import { setCabOptionStatus } from "@/redux-toolkit/reducers/cab-filter";
 import { RootState } from "@/redux-toolkit/store";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,14 +14,14 @@ const CabOptionFilter: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "cabOptionStatus", payload: [...cabOptionStatus, value] });
+      dispatch(setCabOptionStatus([...cabOptionStatus, value]));
     } else {
-      dispatch({ type: "cabOptionStatus", payload: cabOptionStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setCabOptionStatus(cabOptionStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "cabOptionStatus", payload: cabOptionStatus });
+    dispatch(setCabOptionStatus(cabOptionStatus));
   }, [cabOptionStatus]);
 
   return (
@@ -28,12 +29,13 @@ const CabOptionFilter: React.FC = () => {
       className="filter-block"
       onClick={() => {
         setShow(!show);
-      }}>
+      }}
+    >
       <div className={`collection-collapse-block ${show ? "open" : ""}`}>
         <h6 className="collapse-block-title">Car Option</h6>
         <div className="collection-collapse-block-content">
           <div className="collection-brand-filter">
-            {carOptionData.map((data: IFacilityProps,index) => {
+            {carOptionData.map((data: IFacilityProps, index) => {
               return (
                 <div className="form-check collection-filter-checkbox" key={index}>
                   <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={cabOptionStatus.includes(data.type)} onChange={handleCheckboxChange} />

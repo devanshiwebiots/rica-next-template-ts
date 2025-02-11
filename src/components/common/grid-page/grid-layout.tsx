@@ -15,6 +15,7 @@ import CabGridProduct from "../elements/product-box-5/cab-grid";
 import RestaurantProducts from "../elements/product-box-6/restaurant-product";
 import useFilterRestaurant from "@/utils/filters/useFilterRestaurant";
 import { IGridLayoutProps } from "./grid-page.d";
+import { setProductCount } from "@/redux-toolkit/reducers/grid-reducer";
 
 const GridLayout: FC<IGridLayoutProps> = ({ value, grid, type, view, trip }) => {
   const cardToShow = 6;
@@ -24,7 +25,7 @@ const GridLayout: FC<IGridLayoutProps> = ({ value, grid, type, view, trip }) => 
   const totalPages = Math.ceil(showProduct?.length / cardToShow);
 
   useEffect(() => {
-    dispatch({ type: "productCount", payload: showProduct?.length });
+    dispatch(setProductCount(showProduct?.length));
   }, [dispatch, showProduct]);
 
   return (
@@ -55,18 +56,18 @@ const GridLayout: FC<IGridLayoutProps> = ({ value, grid, type, view, trip }) => 
               }
             })}
 
-            {type === "restaurant" &&
-              (showProduct)?.slice(cardToShow * grid.toPage - cardToShow, cardToShow * grid.toPage).map((dataItems, i) => {
-                if (grid.gridStyle === "list-view") {
-                  return type === dataItems.type && <ListPage data={dataItems} view={view} key={i} />;
-                } else {
-                  return (
-                    <div className={`${grid.gridSize === 3 && "col-xl-4"} ${grid.gridSize === 4 && "col-xl-3 col-lg-4"} col-sm-6 popular grid-item wow fadeInUp`} key={i}>
-                      <RestaurantProducts data={dataItems} view={view} key={dataItems.id} />
-                    </div>
-                  );
-                }
-              })}
+          {type === "restaurant" &&
+            showProduct?.slice(cardToShow * grid.toPage - cardToShow, cardToShow * grid.toPage).map((dataItems, i) => {
+              if (grid.gridStyle === "list-view") {
+                return type === dataItems.type && <ListPage data={dataItems} view={view} key={i} />;
+              } else {
+                return (
+                  <div className={`${grid.gridSize === 3 && "col-xl-4"} ${grid.gridSize === 4 && "col-xl-3 col-lg-4"} col-sm-6 popular grid-item wow fadeInUp`} key={i}>
+                    <RestaurantProducts data={dataItems} view={view} key={dataItems.id} />
+                  </div>
+                );
+              }
+            })}
 
           {type === "cab" && grid.gridStyle === "list-view" ? (
             <CabListProducts data={showProduct as IBaseProps[]} cardToShow={cardToShow} grid={grid} />

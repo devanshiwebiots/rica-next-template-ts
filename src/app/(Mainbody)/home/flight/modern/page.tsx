@@ -1,6 +1,6 @@
 import { FC } from "react";
 import CustomLayout from "@/layouts/layout";
-// import "@/public/assets/scss/color1.scss";
+
 import HomeBanner from "@/components/home/flight/modern/home-banner";
 import Destination from "@/components/home/flight/modern/destination";
 import AirlinesDetail from "@/components/home/flight/modern/airlines-detail";

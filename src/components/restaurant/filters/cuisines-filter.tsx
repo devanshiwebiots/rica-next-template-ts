@@ -1,5 +1,6 @@
 import { districtData } from "@/data/hotels/filter-data";
 import { cuisinesData } from "@/data/restaurant/filter";
+import { setCuisinesStatus } from "@/redux-toolkit/reducers/restaurant.filter";
 import { RootState } from "@/redux-toolkit/store";
 import React, { useState, ChangeEvent, useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,14 +15,14 @@ const CuisinesFilter: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "cuisinesStatus", payload: [...cuisinesStatus, value] });
+      dispatch(setCuisinesStatus([...cuisinesStatus, value]));
     } else {
-      dispatch({ type: "cuisinesStatus", payload: cuisinesStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setCuisinesStatus(cuisinesStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "cuisinesStatus", payload: cuisinesStatus });
+    dispatch(setCuisinesStatus(cuisinesStatus));
   }, [cuisinesStatus]);
 
   return (
@@ -29,12 +30,13 @@ const CuisinesFilter: React.FC = () => {
       className="filter-block"
       onClick={() => {
         setShow(!show);
-      }}>
+      }}
+    >
       <div className={`collection-collapse-block ${show ? "open" : ""}`}>
         <h6 className="collapse-block-title">Cuisines</h6>
         <div className={`collection-collapse-block-content ${!show ? "d-none" : ""}`}>
           <div className="collection-brand-filter">
-            {cuisinesData.map((data: IFacilityProps,index) => {
+            {cuisinesData.map((data: IFacilityProps, index) => {
               return (
                 <div className="form-check collection-filter-checkbox" key={index}>
                   <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={cuisinesStatus.includes(data.type)} onChange={handleCheckboxChange} />
@@ -51,5 +53,5 @@ const CuisinesFilter: React.FC = () => {
   );
 };
 
-const MemorizedCuisinesFilter = memo(CuisinesFilter)
+const MemorizedCuisinesFilter = memo(CuisinesFilter);
 export default MemorizedCuisinesFilter;

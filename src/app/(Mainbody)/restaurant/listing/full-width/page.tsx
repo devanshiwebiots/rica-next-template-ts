@@ -1,6 +1,6 @@
 "use client";
 import { FC, useEffect } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux-toolkit/store";
@@ -19,7 +19,7 @@ const FullWidth: FC = () => {
   return (
     <CustomLayout logo="dark" title="light_header" userBgClass="user user-light" loader="food">
       <HomeBanner />
-      <MapView value={data} side={"left"} gridType={"grid-view"} type="restaurant" size={4}  />
+      <MapView value={data} side={"left"} gridType={"grid-view"} type="restaurant" size={4} />
     </CustomLayout>
   );
 };

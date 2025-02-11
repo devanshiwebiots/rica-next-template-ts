@@ -22,14 +22,12 @@ const SearchMinimal: React.FC = () => {
               </div>
               <div className="col p-0">
                 <div className="form-group">
-                  {/* <DatePickerComponent start={startDate} setStart={setStartDate} /> */}
                   <input type="text" name="text" placeholder="Check-in"className="form-control" />
                   <i className="fas fa-calendar-alt icon"></i>
                 </div>
               </div>
               <div className="col p-0">
                 <div className="form-group">
-                  {/* <DatePickerComponent start={startDate1} setStart={setStartDate1} /> */}
                   <input type="text" name="text" placeholder="Check-out"className="form-control" />
                   <i className="fas fa-calendar-alt icon"></i>
                 </div>

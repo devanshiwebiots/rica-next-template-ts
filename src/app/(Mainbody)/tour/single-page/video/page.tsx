@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import SinglePage from "@/components/tour/single-page/common/single-page";
 import VideoBanner from "@/components/tour/single-page/video/banner";

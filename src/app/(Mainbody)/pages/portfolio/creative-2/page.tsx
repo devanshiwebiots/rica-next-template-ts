@@ -1,5 +1,5 @@
 "use client";
-// import "@/public/assets/scss/color1.scss";
+
 import Breadcrumb from "@/components/common/breadcrumb/page";
 import BodyContent from "@/components/pages/portfolio/creative-2/page";
 import CustomLayout from "@/layouts/layout";

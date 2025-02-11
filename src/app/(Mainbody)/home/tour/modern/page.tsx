@@ -11,7 +11,6 @@ import SpecialOffer from "@/components/home/tour/modern/special-offer";
 import Testimonial from "@/components/home/tour/modern/testimonial";
 import Video from "@/components/home/tour/modern/video";
 import CustomLayout from "@/layouts/layout";
-// import "@/public/assets/scss/color1.scss";
 
 const Modern: FC = () => {
   return (

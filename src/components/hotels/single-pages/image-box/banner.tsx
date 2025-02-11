@@ -32,7 +32,7 @@ const Banner: FC = () => {
               <Fragment key={index}>
                 <Item original={data.bigImg} width="1200" height="800">
                   {({ ref, open }) => (
-                    <div className="col-md-6 p-0" ref={ref as React.MutableRefObject<HTMLImageElement>} onClick={open}>
+                    <div className="col-md-6 p-0" ref={ref} onClick={open}>
                       <Img src={data.bigImg} className="img-fluid bg-img" alt="" />
                     </div>
                   )}

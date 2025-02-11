@@ -1,6 +1,6 @@
 "use client";
 import { FC, useEffect } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import Breadcrumb from "@/components/common/breadcrumb/page";
 import CustomLayout from "@/layouts/layout";
 import SearchBox from "@/components/common/search-box/page";
@@ -20,18 +20,18 @@ const HotelSlider: FC = () => {
     <CustomLayout title="inner-page" userBgClass="user user-light" loader="no-sidebar">
       <Breadcrumb title="Home" subTitle="hotels in dubai" bannerImg={"/assets/images/inner-pages/bg-bread.jpg"} />
       <div className="search-panel" id="searchBar">
-      <div className="container">
-        <div className="row">
-          <div className="col-xl-10 offset-xl-1">
-            <div className="search-panel" id="searchBar">
-              <div className="search-section">
-                <SearchBox />
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-10 offset-xl-1">
+              <div className="search-panel" id="searchBar">
+                <div className="search-section">
+                  <SearchBox />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
       <GridView size={4} gridType={"grid-view"} side={"no"} value={data} topFilter={true} grid4Img={true} view="slider" type="hotel" latestFilter />
     </CustomLayout>
   );

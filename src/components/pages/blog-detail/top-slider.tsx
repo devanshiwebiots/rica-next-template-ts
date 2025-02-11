@@ -15,7 +15,7 @@ const TopSlider:FC = () => {
           {imgData.map((data, i) => (
             <Item key={i} original={data} width="1000" height="550">
               {({ ref, open }) => (
-                <div ref={ref as React.MutableRefObject<HTMLImageElement>} onClick={open}>
+                <div ref={ref} onClick={open}>
                   <Img src={data} alt="" className="img-fluid " />
                 </div>
               )}

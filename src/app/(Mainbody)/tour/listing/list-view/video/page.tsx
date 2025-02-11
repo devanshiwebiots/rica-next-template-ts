@@ -1,6 +1,6 @@
 "use client";
 import { FC, useEffect } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import Breadcrumb from "@/components/common/breadcrumb/page";
 import CustomLayout from "@/layouts/layout";
 import { useDispatch, useSelector } from "react-redux";

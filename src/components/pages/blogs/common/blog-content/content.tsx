@@ -5,6 +5,7 @@ import BodyContent from "@/components/common/blog/element-1";
 import Pagination from "@/components/common/grid-page/pagination/page-layout";
 import MasonryBlog from "@/components/common/blog/element-2";
 import { RootState } from "@/redux-toolkit/store";
+import { setGridSize, setProductCount } from "@/redux-toolkit/reducers/grid-reducer";
 
 const ContentPage: FC<IBlogsSidebarProps> = ({ slideData, size, view }) => {
   const cardToShow = 6;
@@ -12,14 +13,14 @@ const ContentPage: FC<IBlogsSidebarProps> = ({ slideData, size, view }) => {
   const totalPages = Math.ceil(slideData?.length / cardToShow);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: "gridSize", payload: size });
-    dispatch({ type: "productCount", payload: slideData?.length });
+    dispatch(setGridSize(size));
+    dispatch(setProductCount(slideData?.length));
   }, [dispatch, slideData]);
   return (
     <>
       {view !== "masonry" ? (
         <div className={`row ${view === "creative" || view === "list" ? "blog-list" : ""}`}>
-          {slideData.slice(cardToShow * grid.toPage - cardToShow, cardToShow * grid.toPage).map((items: IBlogProps,index) => (
+          {slideData.slice(cardToShow * grid.toPage - cardToShow, cardToShow * grid.toPage).map((items: IBlogProps, index) => (
             <div className={`${view === "creative" || view === "list" ? "col-12" : "col-md-6"} ${grid.gridSize === 3 && "col-xl-4"}`} key={index}>
               <BodyContent data={items} view={view} />
             </div>
@@ -27,7 +28,7 @@ const ContentPage: FC<IBlogsSidebarProps> = ({ slideData, size, view }) => {
         </div>
       ) : (
         <>
-          {slideData?.slice(cardToShow * grid.toPage - cardToShow, cardToShow * grid.toPage).map((item: IBlogProps,index) => (
+          {slideData?.slice(cardToShow * grid.toPage - cardToShow, cardToShow * grid.toPage).map((item: IBlogProps, index) => (
             <MasonryBlog data={item} key={index} />
           ))}
         </>

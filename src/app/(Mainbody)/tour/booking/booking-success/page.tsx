@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import SuccessPage from "@/components/common/booking-page/success";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 
 const BookingSuccess: FC = () => {

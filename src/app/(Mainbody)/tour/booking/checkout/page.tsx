@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import Breadcrumb from "@/components/common/breadcrumb/page";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import Checkout from "@/components/hotels/booking/checkout/checkout-main";
 

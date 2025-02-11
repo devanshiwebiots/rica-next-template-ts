@@ -7,8 +7,9 @@ import MemoizedStopFilter from "./stop-filter";
 import MemorizedFareFilter from "@/components/common/filters/fare";
 import { useSearchParams } from "next/navigation";
 import PriceRange from "@/components/hotels/filters/price-range";
+import { setPriceStatus } from "@/redux-toolkit/reducers/hotel-filter";
 
-const TopFilter: FC<ITopFilterProps> = ({ value,setShowFilter,showFilter }) => {
+const TopFilter: FC<ITopFilterProps> = ({ value, setShowFilter, showFilter }) => {
   const [showFilterId, setShowFilterId] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
@@ -38,9 +39,9 @@ const TopFilter: FC<ITopFilterProps> = ({ value,setShowFilter,showFilter }) => {
 
   useEffect(() => {
     if (MIN === null && MAX === null) {
-      dispatch({ type: "priceStatus", payload: { min: minPrice?.price, max: maxPrice?.price } });
+      dispatch(setPriceStatus({ min: minPrice?.price, max: maxPrice?.price }));
     } else {
-      dispatch({ type: "priceStatus", payload: { min: MIN, max: MAX } });
+      dispatch(setPriceStatus({ min: MIN, max: MAX }));
     }
   }, [dispatch, minPrice, maxPrice, MIN, MAX]);
 
@@ -59,9 +60,9 @@ const TopFilter: FC<ITopFilterProps> = ({ value,setShowFilter,showFilter }) => {
 
   return (
     <div className="col-12">
-      <div className="top-filter-section" style={{left:showFilter?"-1px":""}}>
+      <div className="top-filter-section" style={{ left: showFilter ? "-1px" : "" }}>
         <ul>
-          <li className="back-btn" onClick={()=>setShowFilter(!showFilter)}>
+          <li className="back-btn" onClick={() => setShowFilter(!showFilter)}>
             <div className="mobile_back text-end">
               <span>Back</span>
               <i aria-hidden="true" className="fa fa-angle-right ps-2"></i>
@@ -70,7 +71,7 @@ const TopFilter: FC<ITopFilterProps> = ({ value,setShowFilter,showFilter }) => {
           <li className="filter-title">
             <h6>filter :</h6>
           </li>
-          {filters.map((filter,index) => (
+          {filters.map((filter, index) => (
             <li className={`onclick-title ${filter.id === showFilterId ? "show" : ""}`} key={index} onClick={() => handleFilterClick(filter.id)}>
               <h6>{filter.title}</h6>
               <div className="onclick-content">{filter.component}</div>

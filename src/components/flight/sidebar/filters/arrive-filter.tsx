@@ -1,5 +1,6 @@
 import MemoizedArriveFilter from "@/components/common/filters/arrival";
 import { arriveTimeData } from "@/data/flight/filter-data";
+import { setDepartureStatus } from "@/redux-toolkit/reducers/flight-filter";
 import Img from "@/utils/BackgroundImageRatio";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,14 +15,14 @@ const ArriveFilterContent: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "departureStatus", payload: [...departureStatus, value] });
+      dispatch(setDepartureStatus([...departureStatus, value]));
     } else {
-      dispatch({ type: "departureStatus", payload: departureStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setDepartureStatus(departureStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "departureStatus", payload: departureStatus });
+    dispatch(setDepartureStatus(departureStatus));
   }, [departureStatus]);
 
   return (
@@ -29,7 +30,8 @@ const ArriveFilterContent: React.FC = () => {
       className="filter-block"
       onClick={() => {
         setShow(!show);
-      }}>
+      }}
+    >
       <div className={`collection-collapse-block ${show ? "open" : ""}`}>
         <h6 className="collapse-block-title">Arrive</h6>
         <div className={`collection-collapse-block-content ${!show ? "d-none" : ""}`}>

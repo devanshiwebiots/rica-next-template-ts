@@ -1,4 +1,5 @@
 import { districtData } from "@/data/hotels/filter-data";
+import { setDistrictStatus } from "@/redux-toolkit/reducers/hotel-filter";
 import { RootState } from "@/redux-toolkit/store";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,14 +14,14 @@ const DistrictFilter: React.FC = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      dispatch({ type: "districtStatus", payload: [...districtStatus, value] });
+      dispatch(setDistrictStatus([...districtStatus, value]));
     } else {
-      dispatch({ type: "districtStatus", payload: districtStatus.filter((selectedValue: string) => selectedValue !== value) });
+      dispatch(setDistrictStatus(districtStatus.filter((selectedValue: string) => selectedValue !== value)));
     }
   };
 
   useEffect(() => {
-    dispatch({ type: "districtStatus", payload: districtStatus });
+      dispatch(setDistrictStatus(districtStatus));
   }, [districtStatus]);
 
   return (
@@ -28,14 +29,15 @@ const DistrictFilter: React.FC = () => {
       className="filter-block"
       onClick={() => {
         setShow(!show);
-      }}>
+      }}
+    >
       <div className={`collection-collapse-block ${show ? "open" : ""}`}>
         <h6 className="collapse-block-title" onClick={() => setShow(!show)}>
           district
         </h6>
         <div className={`collection-collapse-block-content ${!show ? "d-none" : ""}`}>
           <div className="collection-brand-filter">
-            {districtData.map((data: IFacilityProps,index) => {
+            {districtData.map((data: IFacilityProps, index) => {
               return (
                 <div className="form-check collection-filter-checkbox" key={index}>
                   <input type="checkbox" className="form-check-input" id={data.type} value={data.type} checked={districtStatus.includes(data.type)} onChange={handleCheckboxChange} />

@@ -6,7 +6,6 @@ import HomeBanner from "@/components/home/hotels/vector/home-banner";
 import OfferComponent from "@/components/home/hotels/vector/offers";
 import Start from "@/components/home/hotels/vector/start";
 import CustomLayout from "@/layouts/layout";
-// import "@/public/assets/scss/color1.scss";
 
 const HotelVector: FC = () => {
   return (

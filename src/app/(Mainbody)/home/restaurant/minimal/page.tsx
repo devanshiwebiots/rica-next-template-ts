@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import TopMenu from "@/components/home/restaurant/minimal/top-menu";
 import Collection from "@/components/home/restaurant/minimal/collection";

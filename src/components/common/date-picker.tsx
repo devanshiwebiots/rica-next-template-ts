@@ -8,7 +8,7 @@ interface IDatePickerProps {
 }
 
 const DatePickerComponent: FC<IDatePickerProps> = ({ setStart, start }) => {
-  return <ReactDatePicker selected={start} onChange={(date: Date) => setStart(date)} id="datepicker" className="datepicker-main" dateFormat="dd MMMM" />;
+  return <ReactDatePicker selected={start} onChange={(date: Date | null) => setStart(date)} id="datepicker" className="datepicker-main" dateFormat="dd MMMM" />;
 };
 
 export default DatePickerComponent;

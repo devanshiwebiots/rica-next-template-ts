@@ -1,5 +1,5 @@
 import { SearchNow, WelcomeToRica } from "@/constant/constant";
-import Typewriter from "typewriter-effect";
+import { Typewriter } from "react-simple-typewriter";
 import SearchMinimal from "./search";
 import Img from "@/utils/BackgroundImageRatio";
 import Link from 'next/link';
@@ -17,13 +17,7 @@ const HomeBanner: React.FC = () => {
                   <div>
                     <h4>{WelcomeToRica}</h4>
                     <h1>
-                      <Typewriter
-                        options={{
-                          strings: ["Find Deals On"],
-                          autoStart: true,
-                          loop: true,
-                        }}
-                      />
+                      <Typewriter words={["Find Deals On"]} loop={0} cursor />
                       <span className="txt-rotate" data-period="2000" data-rotate='[ "hotels.", "homes.", "Hostels.", "villas.", "apts." ]'></span>
                     </h1>
                     <Link href="/hotel/single-page/left-sidebar" className="btn btn-solid d-none d-lg-inline-block">

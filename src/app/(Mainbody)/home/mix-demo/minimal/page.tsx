@@ -1,5 +1,5 @@
 import { FC } from "react";
-// import "@/public/assets/scss/color1.scss";
+
 import CustomLayout from "@/layouts/layout";
 import OfferComponent from "@/components/home/hotels/vector/offers";
 import Destination from "@/components/home/hotels/vector/destination";
