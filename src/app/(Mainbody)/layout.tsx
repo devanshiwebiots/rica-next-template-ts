@@ -1,5 +1,5 @@
 import { Providers } from "@/redux-toolkit/provider";
-import "@/public/assets/scss/globals.scss";
+import "../../../src/globals.scss";
 import { detectLanguage } from "../i18n/server";
 import { I18nProvider } from "../i18n/i18n-context";
 import ErrorBoundary from "@/components/common/ErrorBoundry";
